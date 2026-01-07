@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileTrace - Плакат А1</title>
+    <style>
+        @media print {
+            @page {
+                size: A1;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+        }
+
+        .poster {
+            width: 594mm;
+            height: 841mm;
+            background: linear-gradient(to bottom right, #f0f4ff 0%, #e0e7ff 100%);
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 36px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .header .description {
+            font-size: 24px;
+            opacity: 0.85;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid;
+        }
+
+        .card.problem {
+            border-color: #ef4444;
+            background: linear-gradient(to bottom, #fee2e2 0%, #ffffff 100%);
+        }
+
+        .card.solution {
+            border-color: #10b981;
+            background: linear-gradient(to bottom, #d1fae5 0%, #ffffff 100%);
+        }
+
+        .card.goal {
+            border-color: #3b82f6;
+            background: linear-gradient(to bottom, #dbeafe 0%, #ffffff 100%);
+        }
+
+        .card.workflow {
+            border-color: #8b5cf6;
+            background: linear-gradient(to bottom, #ede9fe 0%, #ffffff 100%);
+        }
+
+        .card.tracking {
+            border-color: #f59e0b;
+            background: linear-gradient(to bottom, #fef3c7 0%, #ffffff 100%);
+        }
+
+        .card.advantages {
+            border-color: #6366f1;
+            background: linear-gradient(to bottom, #e0e7ff 0%, #ffffff 100%);
+        }
+
+        .card.tech {
+            border-color: #14b8a6;
+            background: linear-gradient(to bottom, #ccfbf1 0%, #ffffff 100%);
+        }
+
+        .card.audience {
+            border-color: #f97316;
+            background: linear-gradient(to bottom, #ffedd5 0%, #ffffff 100%);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .card-content {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .card-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card-content li:before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .workflow-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .advantage-item, .tech-item {
+            background: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .advantage-item strong, .tech-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .security-card {
+            background: white;
+            border: 3px solid #6b7280;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .results-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer-main {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .footer-sub {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        strong {
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <h1>FileTrace</h1>
+            <div class="subtitle">Система динамического анализа исполняемых файлов</div>
+            <div class="description">Безопасный запуск .exe в изолированной среде + сбор низкоуровневых логов Windows</div>
+        </div>
+
+        <div class="main-grid">
+            <div>
+                <div class="card problem" style="margin-bottom: 25px;">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #fee2e2; color: #dc2626;">⚠️</div>
+                        <div class="card-title" style="color: #dc2626;">Проблема</div>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>450 000+</strong> новых образцов малвари ежедневно</li>
+                            <li>Антивирусы работают по <strong>сигнатурам</strong></li>
+                            <li>Упаковщики и криптеры <strong>обходят</strong> детекцию</li>
+                            <li><strong>Zero-day</strong> угрозы остаются незамеченными</li>
+                            <li>Обфускация делает статический анализ <strong>бесполезным</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card solution" style="margin-bottom: 25px;">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #d1fae5; color: #059669;">✓</div>
+                        <div class="card-title" style="color: #059669;">Решение</div>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>Динамический анализ</strong> вместо статического</li>
+                            <li><strong>Docker-контейнеры</strong> для изоляции</li>
+                            <li><strong>ETW-трассировка</strong> на уровне ядра</li>
+                            <li>Видим <strong>реальное поведение</strong>, а не код</li>
+                            <li>Малварь <strong>не может спрятаться</strong> от ядра ОС</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card goal">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #dbeafe; color: #2563eb;">🎯</div>
+                        <div class="card-title" style="color: #2563eb;">Цель проекта</div>
+                    </div>
+                    <div class="card-content">
+                        <p>Разработать рабочий инструмент для динамического анализа .exe-файлов в изолированной контейнерной среде с использованием ETW и доступным веб-интерфейсом.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card workflow" style="margin-bottom: 25px;">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #ede9fe; color: #7c3aed;">⚙️</div>
+                        <div class="card-title" style="color: #7c3aed;">Как работает</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="workflow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Загрузка файла</div>
+                                <div>Пользователь загружает .exe через веб-интерфейс</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Запуск ETW</div>
+                                <div>Система начинает трассировку на хосте (xperf)</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Создание контейнера</div>
+                                <div>Динамически генерируется Dockerfile</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Выполнение</div>
+                                <div>Файл запускается в контейнере (180 сек таймаут)</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <div class="step-title">Сбор данных</div>
+                                <div>ETW фиксирует все события на уровне ядра</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <div class="step-title">Обработка</div>
+                                <div>ETL → CSV → JSON конвертация</div>
+                            </div>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <div class="step-title">Отчёт</div>
+                                <div>Результаты доступны через веб-интерфейс</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card tracking">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #fef3c7; color: #d97706;">👁️</div>
+                        <div class="card-title" style="color: #d97706;">Что отслеживаем</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="grid-2">
+                            <div>● Создание процессов</div>
+                            <div>● Загрузка DLL</div>
+                            <div>● Файловые операции</div>
+                            <div>● Запись в реестр</div>
+                            <div>● Сетевая активность</div>
+                            <div>● Инжекция кода</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card advantages" style="margin-bottom: 25px;">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #e0e7ff; color: #4f46e5;">⚡</div>
+                        <div class="card-title" style="color: #4f46e5;">Преимущества</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: 12px;">
+                            <div class="advantage-item">
+                                <strong>⚡ Скорость</strong>
+                                7-10 сек vs 29-60 сек (VM)
+                            </div>
+                            <div class="advantage-item">
+                                <strong>🎯 Точность</strong>
+                                95-100% детекции событий
+                            </div>
+                            <div class="advantage-item">
+                                <strong>💾 Ресурсы</strong>
+                                В 3-6 раз меньше, чем VM
+                            </div>
+                            <div class="advantage-item">
+                                <strong>🔒 Безопасность</strong>
+                                Полная изоляция
+                            </div>
+                            <div class="advantage-item">
+                                <strong>👁️ Прозрачность</strong>
+                                ETW на уровне ядра
+                            </div>
+                            <div class="advantage-item">
+                                <strong>🆓 Open Source</strong>
+                                Бесплатно и расширяемо
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card tech" style="margin-bottom: 25px;">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #ccfbf1; color: #0f766e;">🔧</div>
+                        <div class="card-title" style="color: #0f766e;">Технологии</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="grid-2">
+                            <div class="tech-item">
+                                <strong>Backend</strong>
+                                FastAPI
+                            </div>
+                            <div class="tech-item">
+                                <strong>Frontend</strong>
+                                HTML/CSS/JS
+                            </div>
+                            <div class="tech-item">
+                                <strong>Изоляция</strong>
+                                Docker
+                            </div>
+                            <div class="tech-item">
+                                <strong>Трассировка</strong>
+                                ETW
+                            </div>
+                            <div class="tech-item">
+                                <strong>БД</strong>
+                                PostgreSQL
+                            </div>
+                            <div class="tech-item">
+                                <strong>Утилиты</strong>
+                                xperf, tracerpt
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card audience">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: #ffedd5; color: #ea580c;">👥</div>
+                        <div class="card-title" style="color: #ea580c;">Для кого</div>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Специалисты по ИБ (SOC-аналитики)</li>
+                            <li>Студенты и преподаватели</li>
+                            <li>Участники CTF и олимпиад</li>
+                            <li>Исследователи малвари</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="security-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #f3f4f6; color: #4b5563;">🔐</div>
+                    <div class="card-title" style="color: #4b5563;">Безопасность</div>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>✓ Соответствие ФЗ-152 (персональные данные)</li>
+                        <li>✓ Хеширование паролей (bcrypt)</li>
+                        <li>✓ Email-верификация + Google reCAPTCHA</li>
+                        <li>✓ JWT-токены для авторизации</li>
+                        <li>✓ Изолированный запуск без root-прав</li>
+                        <li>✓ Автоматическое удаление файлов через 7 дней</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="results-card">
+                <h2 style="font-size: 32px; margin-bottom: 10px; font-weight: 700;">Результаты тестирования</h2>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-number">97%</div>
+                        <div class="result-label">Создание процессов</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">100%</div>
+                        <div class="result-label">Загрузка DLL</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">95%</div>
+                        <div class="result-label">Файловые операции</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">94%</div>
+                        <div class="result-label">Запись в реестр</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">87%</div>
+                        <div class="result-label">Сетевые соединения</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">83%</div>
+                        <div class="result-label">Инжекция кода</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-main">
+                FileTrace — быстрый, безопасный и точный инструмент для динамического анализа вредоносного ПО
+            </div>
+            <div class="footer-sub">
+                Проект для Всероссийской олимпиады школьников по информационной безопасности | 2025
+            </div>
+        </div>
+    </div>
+</body>
+</html>
